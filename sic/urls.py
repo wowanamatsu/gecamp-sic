@@ -10,4 +10,5 @@ urlpatterns = [
 # Rotas para a pagina de Login
 urlpatterns +=[
     path('login/', login.logar, name='login'),
+    path('logout/', login.deslogar, name='logout'),
 ]
