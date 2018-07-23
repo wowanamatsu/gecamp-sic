@@ -15,5 +15,7 @@ urlpatterns +=[
 
 # Rotas para paises
 urlpatterns += [
-    path('paises/', paises.paises, name='paises')
+    path('paises/', paises.paises, name='paises'),
+    path('teste/', paises.teste, name='teste'),
+    path('api/', paises.api, name='teste'),
 ]

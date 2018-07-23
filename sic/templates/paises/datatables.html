@@ -1,0 +1,55 @@
+<!DOCTYPE html>{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tentando usar DataTable no Django</title>
+    <link rel="stylesheet" href="{% static 'css/dataTables.min.css' %}">
+</head>
+<body>
+
+<div>
+    <table class="table" id="myTable">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th style="width: 20%">Nome</th>
+                <th style="width: 20%">Nome Formal</th>
+                <th>Código</th>
+                <th>Codigo Área</th>
+                <th>Criado em</th>
+                <th>Atualizado em</th>
+            </tr>
+        </thead>
+
+        <tbody></tbody>
+    </table>
+</div>
+
+
+<script src="{% static 'js/jquery.3.2.1.min.js' %}"></script>
+<script src="{% static 'js/dataTables.min.js' %}"></script>
+
+<script>
+    $(document).ready( function () {
+        $('#myTable').DataTable({
+            "processing": true,
+            "ajax": {
+                "processing": true,
+                "url": "/api/",
+                 "dataSrc": ""
+            },
+
+            "columns": [
+                     { "data": "pk"},
+                     { "data": "fields.nome" },
+                     { "data": "fields.nomeFormal" },
+                     { "data": "fields.codigo" },
+                     { "data": "fields.fone"},
+                     { "data": "fields.criado_em"},
+                     { "data": "fields.atualizado_em"}
+            ]
+        });
+    } );
+</script>
+</body>
+</html>
