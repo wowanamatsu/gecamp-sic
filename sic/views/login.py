@@ -1,9 +1,9 @@
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
-
+from django.http import JsonResponse
 
 def logar(request):
-
+    if request.method == 'POST': print('CSRF: {}\nUsuário: {}'.format(request.POST['csrfmiddlewaretoken'],request.POST['username']))
     if request.user.is_authenticated:
        return redirect('home')
 
@@ -18,7 +18,8 @@ def logar(request):
             return redirect('home')
         else:
             error.append('Usuário ou senha incorretos.')
-            return render(request, 'login.html', {'erros':error})
+            return JsonResponse({'data':error})
+            # return render(request, 'login.html', {'erros':error})
     return render(request, 'login.html')
 
 
