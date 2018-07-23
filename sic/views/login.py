@@ -3,7 +3,6 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 
 def logar(request):
-    if request.method == 'POST': print('CSRF: {}\nUsuário: {}'.format(request.POST['csrfmiddlewaretoken'],request.POST['username']))
     if request.user.is_authenticated:
        return redirect('home')
 
@@ -15,13 +14,11 @@ def logar(request):
 
         if user is not None and user.is_active:
             login(request, user)
-            return redirect('home')
+            return JsonResponse({'success':'success'})
         else:
             error.append('Usuário ou senha incorretos.')
-            return JsonResponse({'data':error})
-            # return render(request, 'login.html', {'erros':error})
+            return JsonResponse({'error':'access-denied'})
     return render(request, 'login.html')
-
 
 
 def deslogar(request):
