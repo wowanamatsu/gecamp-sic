@@ -7,12 +7,13 @@
 </head>
 <body>
 <div class="container">
+    <p id="resultado"></p>
     {% if erros %}
         {% for erro in erros %}
             <p>{{ erro }}</p>
         {% endfor %}
     {% endif %}
-    <form action="" method="post">
+    <form action="" method="post" id="form-login">
         {% csrf_token %}
       <div class="form-group">
         <label for="username">Usuário</label>
@@ -30,5 +31,8 @@
       <button type="submit" class="btn btn-primary">Logar</button>
     </form>
 </div>
+<script src="{% static 'js/jquery.3.2.1.min.js' %}"></script>
+<!--<script src="{% static 'js/jquery-token-csrf.js' %}"></script>-->
+<script src="{% static 'js/gecamp.js' %}"></script>
 </body>
 </html>
