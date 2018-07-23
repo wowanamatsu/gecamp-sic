@@ -28,4 +28,24 @@
     </tbody>
 </table>
 
+<ul class="pagination">
+    {% if paises.has_previous %}
+        <a class="page-link" href="?page=1"> << </a>
+        <a class="page-link" href="?page={{ paises.previous_page_number }}"> < </a>
+    {% endif %}
+
+        {% for num in paises.paginator.page_range %}
+            {% if paises.number == num %}
+                <li class="page-item"><a class="page-link page-current" href="?page={{num}}">{{ num }}</a></li>
+            {% elif num > paises.number|add:-4 and num < paises.number|add:4 %}
+                <li class="page-item"><a class="page-link" href="?page={{num}}">{{ num }}</a></li>
+            {% endif %}
+        {% endfor %}
+
+    {% if paises.has_next %}
+        <a class="page-link" href="?page={{ paises.next_page_number }}"> > </a>
+        <a class="page-link" href="?page={{ paises.paginator.num_pages }}"> >> </a>
+    {% endif %}
+</ul>
+
 {% endblock %}

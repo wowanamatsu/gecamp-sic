@@ -1,1 +1,9 @@
 * { margin: 0; pedding: 0; }
+
+
+/* Customização do sistema de paginação do bootstrap 4 */
+.pagination { text-align: center; font-size: 13px;}
+.page-current {
+    background-color: #3354aa;
+    color: #fff;
+}
