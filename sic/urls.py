@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import home, login
+from .views import home, login, paises
 
 urlpatterns = [
     path('', home.index, name='home'),
@@ -11,4 +11,9 @@ urlpatterns = [
 urlpatterns +=[
     path('login/', login.logar, name='login'),
     path('logout/', login.deslogar, name='logout'),
+]
+
+# Rotas para paises
+urlpatterns += [
+    path('paises/', paises.paises, name='paises')
 ]

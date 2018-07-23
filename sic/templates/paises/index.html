@@ -1,0 +1,31 @@
+{% extends 'application.html' %}
+
+{% block content %}
+
+<h2>Paises Cadastrados</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Nome Formal</th>
+            <th>Sigla</th>
+            <th>Código</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for pais in paises %}
+            <tr>
+                <td>{{ pais.id }}</td>
+                <td>{{ pais.nome }}</td>
+                <td>{{ pais.nomeFormal }}</td>
+                <td>{{ pais.sigla }}</td>
+                <td>{{ pais.codigo }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
