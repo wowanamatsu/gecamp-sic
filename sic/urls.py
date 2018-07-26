@@ -16,6 +16,12 @@ urlpatterns +=[
 # Rotas para paises
 urlpatterns += [
     path('paises/', paises.paises, name='paises'),
-    path('teste/', paises.teste, name='teste'),
+    path('pais/novo/', paises.novo, name='cadastrar_pais'),
+    path('pais/<int:id>', paises.exibir, name='exibir_pais'),
+    path('pais/<int:id>/edit', paises.atualizar, name='atualizar_pais'),
+    path('pais/<int:id>/delete', paises.deletar, name='deletar_pais'),
+
     path('api/', paises.api, name='teste'),
+    path('pdf/', paises.pdf, name='pdf'),
+    path('teste/', paises.teste, name='teste'),
 ]

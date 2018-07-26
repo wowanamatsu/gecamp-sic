@@ -12,6 +12,7 @@
             <th>Nome Formal</th>
             <th>Sigla</th>
             <th>Código</th>
+            <th>Ações</th>
         </tr>
     </thead>
 
@@ -23,6 +24,11 @@
                 <td>{{ pais.nomeFormal }}</td>
                 <td>{{ pais.sigla }}</td>
                 <td>{{ pais.codigo }}</td>
+                <td>
+                    <a href="{% url 'atualizar_pais' pais.id %}">Atualizar</a>
+                    <a href="{% url 'exibir_pais' pais.id %}">Exibir</a>
+                    <a href="{% url 'deletar_pais' pais.id %}">Deletar</a>
+                </td>
             </tr>
         {% endfor %}
     </tbody>
@@ -47,5 +53,6 @@
         <a class="page-link" href="?page={{ paises.paginator.num_pages }}"> >> </a>
     {% endif %}
 </ul>
-
+<hr>
+<a href="{% url 'cadastrar_pais' %}">Novo Cadastro</a>
 {% endblock %}

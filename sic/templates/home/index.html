@@ -2,7 +2,10 @@
 
 {% block content %}
 
-<a href="">Home</a>
+<a href="">Home</a> |
+<a href="{% url 'paises' %}">Paises</a> |
+<a href="{% url 'cadastrar_pais' %}">Cadastrar Pais</a> |
 <a href="logout/">Sair</a>
+<hr>
 
 {% endblock %}
