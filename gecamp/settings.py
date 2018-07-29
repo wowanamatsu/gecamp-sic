@@ -50,7 +50,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
-    'sic.LoginRequiredMiddleware.GlobalRequiredLogin'
+    'sic.LoginRequiredMiddleware.GlobalRequiredLogin',
 ]
 
 ROOT_URLCONF = 'gecamp.urls'
@@ -123,6 +123,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Sessions in django
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
