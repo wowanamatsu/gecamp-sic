@@ -2,57 +2,77 @@
 
 {% block content %}
 
-<h2>Paises Cadastrados</h2>
+<div class="row">
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">Lista de Paises Cadastrados</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nome</th>
+                        <th>Nome Formal</th>
+                        <th>Sigla</th>
+                        <th>Código</th>
+                        <th></th>
+                    </tr>
+                    </thead>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Nome</th>
-            <th>Nome Formal</th>
-            <th>Sigla</th>
-            <th>Código</th>
-            <th>Ações</th>
-        </tr>
-    </thead>
+                    <tbody>
+                    {% for pais in paises %}
+                    <tr>
+                        <td>{{ pais.id }}</td>
+                        <td>{{ pais.nome }}</td>
+                        <td>{{ pais.nomeFormal }}</td>
+                        <td>{{ pais.sigla }}</td>
+                        <td>{{ pais.codigo }}</td>
+                        <td>
+                            <a class="btn btn-xs btn-success" href="{% url 'atualizar_pais' pais.id %}">Atualizar</a>
+                            <a class="btn btn-xs btn-info" href="{% url 'exibir_pais' pais.id %}">Exibir</a>
+                            <a class="btn btn-xs btn-danger" href="{% url 'deletar_pais' pais.id %}">Deletar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination pull-right">
+                        {% if paises.has_previous %}
+                        <li>
+                            <a href="?page=1"> << </a>
+                            <a href="?page={{ paises.previous_page_number }}"> < </a>
+                        </li>
+                        {% endif %}
 
-    <tbody>
-        {% for pais in paises %}
-            <tr>
-                <td>{{ pais.id }}</td>
-                <td>{{ pais.nome }}</td>
-                <td>{{ pais.nomeFormal }}</td>
-                <td>{{ pais.sigla }}</td>
-                <td>{{ pais.codigo }}</td>
-                <td>
-                    <a href="{% url 'atualizar_pais' pais.id %}">Atualizar</a>
-                    <a href="{% url 'exibir_pais' pais.id %}">Exibir</a>
-                    <a href="{% url 'deletar_pais' pais.id %}">Deletar</a>
-                </td>
-            </tr>
-        {% endfor %}
-    </tbody>
-</table>
+                        {% for num in paises.paginator.page_range %}
+                        {% if paises.number == num %}
+                        <li class="active"><a href="?page={{num}}">{{ num }}</a></li>
+                        {% elif num > paises.number|add:-4 and num < paises.number|add:4 %}
+                        <li><a class="page-link" href="?page={{num}}">{{ num }}</a></li>
+                        {% endif %}
+                        {% endfor %}
 
-<ul class="pagination">
-    {% if paises.has_previous %}
-        <a class="page-link" href="?page=1"> << </a>
-        <a class="page-link" href="?page={{ paises.previous_page_number }}"> < </a>
-    {% endif %}
+                        {% if paises.has_next %}
+                        <li>
+                            <a href="?page={{ paises.next_page_number }}">
+                                >
+                            </a>
+                            <a href="?page={{ paises.paginator.num_pages }}"> >> </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <!-- /.box -->
+    </div>
+</div>
 
-        {% for num in paises.paginator.page_range %}
-            {% if paises.number == num %}
-                <li class="page-item"><a class="page-link page-current" href="?page={{num}}">{{ num }}</a></li>
-            {% elif num > paises.number|add:-4 and num < paises.number|add:4 %}
-                <li class="page-item"><a class="page-link" href="?page={{num}}">{{ num }}</a></li>
-            {% endif %}
-        {% endfor %}
-
-    {% if paises.has_next %}
-        <a class="page-link" href="?page={{ paises.next_page_number }}"> > </a>
-        <a class="page-link" href="?page={{ paises.paginator.num_pages }}"> >> </a>
-    {% endif %}
-</ul>
-<hr>
-<a href="{% url 'cadastrar_pais' %}">Novo Cadastro</a>
 {% endblock %}

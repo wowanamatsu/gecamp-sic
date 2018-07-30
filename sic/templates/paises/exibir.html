@@ -2,12 +2,38 @@
 
 {% block content %}
 
-<h2>{{ pais.nome }}</h2>
-<p>{{ pais.nomeFormal }}</p>
-<p>{{ pais.codigo }}</p>
-<p>{{ pais.sigla }}</p>
+<div class="box">
 
-<hr>
-<a href="{% url 'paises' %}">Paises</a> |
-<a href="{% url 'atualizar_pais' pais.id %}">Atualizar</a>
+    <div class="box-header width-border">
+        <h3 class="box-title">
+            <h2>{{ pais.nome }}</h2>
+        </h3>
+    </div>
+
+    <div class="box-body">
+
+        <dl>
+            <dt>Nome Formal</dt>
+            <dd>{{ pais.nomeFormal }}</dd>
+        </dl>
+
+        <dl>
+            <dt>Código do Pais</dt>
+            <dd>{{ pais.codigo }}</dd>
+        </dl>
+
+        <dl>
+            <dt>Sigla</dt>
+            <dd>{{ pais.sigla }}</dd>
+        </dl>
+
+    </div>
+
+    <div class="box-footer">
+        <a class="btn btn-sm btn-primary" href="{% url 'paises' %}">Paises</a>
+        <a class="btn btn-sm btn-success" href="{% url 'atualizar_pais' pais.id %}">Atualizar</a>
+    </div>
+
+</div>
+
 {% endblock %}

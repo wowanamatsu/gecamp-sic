@@ -10,7 +10,7 @@ from ..forms import PaisForm
 def paises(request):
     paises = Pais.objects.all()
 
-    paginator = Paginator(paises, 10)
+    paginator = Paginator(paises, 8)
 
     page = request.GET.get('page')
 
