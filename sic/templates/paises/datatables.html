@@ -16,8 +16,10 @@
                 <th style="width: 20%">Nome Formal</th>
                 <th>Código</th>
                 <th>Codigo Área</th>
-                <th>Criado em</th>
-                <th>Atualizado em</th>
+                <!--<th>Criado em</th>-->
+                <!--<th>Atualizado em</th>-->
+                <th> </th>
+                <th> </th>
             </tr>
         </thead>
 
@@ -31,12 +33,12 @@
 
 <script>
     $(document).ready( function () {
-        $('#myTable').DataTable({
+        var table = $('#myTable').DataTable({
             "processing": true,
             "ajax": {
                 "processing": true,
                 "url": "/api/",
-                 "dataSrc": ""
+                "dataSrc": ""
             },
 
             "columns": [
@@ -45,9 +47,26 @@
                      { "data": "fields.nomeFormal" },
                      { "data": "fields.codigo" },
                      { "data": "fields.fone"},
-                     { "data": "fields.criado_em"},
-                     { "data": "fields.atualizado_em"}
+                     //{ "data": "fields.criado_em"},
+                     //{ "data": "fields.atualizado_em"},
+                     {
+                        "data": "pk",
+                        "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                            $(nTd).html("<a href='/pais/"+oData.pk+"'>Exibir</a>");
+                        }
+                     },
+                     {
+                        "defaultContent": "<button>Teste</button>",
+                     }
             ]
+        });
+        
+        $('#myTable tbody').on('click', 'button', function(){
+
+            var data = table.row( $(this).parents('tr')).data();
+            // alert( data['pk'] +"'s salary is: "+ data['pk'] );
+            window.location.href = '/pais/' + data['pk']
+
         });
     } );
 </script>
