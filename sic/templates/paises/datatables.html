@@ -3,12 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Tentando usar DataTable no Django</title>
+    <link rel="stylesheet" href="{% static 'admin_lte/bootstrap/dist/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/dataTables.min.css' %}">
+    <style>
+        td.highlight
+        {
+            background-color: whitesmoke !important;
+        }
+    </style>
 </head>
 <body>
 
 <div>
-    <table class="table" id="myTable">
+    <table class="table table-striped" id="myTable">
         <thead>
             <tr>
                 <th>Id</th>
@@ -60,13 +67,18 @@
                      }
             ]
         });
-        
+
         $('#myTable tbody').on('click', 'button', function(){
 
             var data = table.row( $(this).parents('tr')).data();
             // alert( data['pk'] +"'s salary is: "+ data['pk'] );
             window.location.href = '/pais/' + data['pk']
 
+        }).on('mouseenter', 'td', function(){
+            var colIdx = table.cell(this).index().column;
+
+            $( table.cells().nodes() ).removeClass( 'highlight' );
+            $( table.column( colIdx ).nodes() ).addClass( 'highlight' );
         });
     } );
 </script>

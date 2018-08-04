@@ -1,0 +1,12 @@
+{% extends 'application.html' %}
+{% block title %}{% endblock %}
+
+{% block content %}
+
+<h2>Lista de Estados Cadastrados</h2>
+<hr>
+{% for estado in estados %}
+    {{ estado.sigla }} -- {{ estado.nome }}
+{% endfor %}
+
+{% endblock %}

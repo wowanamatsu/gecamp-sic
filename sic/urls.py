@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import home, login, paises
+from .views import home, login, paises, estados
 
 urlpatterns = [
     path('', home.index, name='home'),
@@ -24,4 +24,10 @@ urlpatterns += [
     path('api/', paises.api, name='teste'),
     path('pdf/', paises.pdf, name='pdf'),
     path('teste/', paises.teste, name='teste'),
+]
+
+# Rotas para estados
+urlpatterns += [
+    path('estados/', estados.index, name='estados'),
+    path('estado/novo', estados.novo, name='cadastrar_estado'),
 ]
