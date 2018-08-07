@@ -30,4 +30,7 @@ urlpatterns += [
 urlpatterns += [
     path('estados/', estados.index, name='estados'),
     path('estado/novo', estados.novo, name='cadastrar_estado'),
+    path('estado/<int:id>', estados.exibir, name='exibir_estado'),
+    path('estado/<int:id>/edit', estados.atualizar, name='atualizar_estado'),
+    path('estado/<int:id>/delete', estados.deletar, name='deletar_estado'),
 ]

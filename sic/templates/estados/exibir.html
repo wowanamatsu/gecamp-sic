@@ -1,0 +1,29 @@
+{% extends 'application.html' %}
+
+{% block content %}
+
+<div class="box">
+
+    <div class="box-header width-border">
+        <h3 class="box-title">
+            <h2>{{ estado.nome }}</h2>
+        </h3>
+    </div>
+
+    <div class="box-body">
+
+        <dl>
+            <dt>Sigla</dt>
+            <dd>{{ estado.sigla }}</dd>
+        </dl>
+
+    </div>
+
+    <div class="box-footer">
+        <a class="btn btn-sm btn-primary" href="{% url 'estados' %}">Estados</a>
+        <!--<a class="btn btn-sm btn-success" href="#">Atualizar</a>-->
+    </div>
+
+</div>
+
+{% endblock %}

@@ -3,10 +3,40 @@
 
 {% block content %}
 
-<h2>Lista de Estados Cadastrados</h2>
-<hr>
-{% for estado in estados %}
-    {{ estado.sigla }} -- {{ estado.nome }}
-{% endfor %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">Lista de Estados Cadastrados</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nome</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    {% for estado in estados %}
+                    <tr>
+                        <td>{{ estado.id }}</td>
+                        <td>{{ estado.nome }}</td>
+                        <td>
+                            <a class="btn btn-xs btn-success" href="{% url 'atualizar_estado' estado.id %}">Atualizar</a>
+                            <a class="btn btn-xs btn-info" href="{% url 'exibir_estado' estado.id %}">Exibir</a>
+                            <a class="btn btn-xs btn-danger" href="{% url 'deletar_estado' estado.id %}">Deletar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
