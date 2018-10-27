@@ -1,4 +1,4 @@
-<!DOCTYPE html>{% load staticfiles %}
+<!DOCTYPE html>{% load static %}
 <html>
 <head>
   <meta charset="utf-8">
@@ -6,35 +6,15 @@
   <title>AdminLTE 2 | Starter {% block title %}{% endblock %}</title>
 
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <link rel="stylesheet" href="{% static 'admin_lte/bootstrap/dist/css/bootstrap.min.css' %}">
-  <link rel="stylesheet" href="{% static 'admin_lte/font-awesome/css/font-awesome.min.css' %}">
-  <link rel="stylesheet" href="{% static 'admin_lte/Ionicons/css/ionicons.min.css' %}">
-  <link rel="stylesheet" href="{% static 'admin_lte/dist/css/AdminLTE.min.css' %}">
-  <link rel="stylesheet" href="{% static 'admin_lte/dist/css/skins/skin-blue.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/AdminLTE.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/skin-blue.min.css' %}">
 
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<!--
-BODY TAG OPTIONS:
-=================
-Apply one or more of the following classes to get the
-desired effect
-|---------------------------------------------------------|
-| SKINS         | skin-blue                               |
-|               | skin-black                              |
-|               | skin-purple                             |
-|               | skin-yellow                             |
-|               | skin-red                                |
-|               | skin-green                              |
-|---------------------------------------------------------|
-|LAYOUT OPTIONS | fixed                                   |
-|               | layout-boxed                            |
-|               | layout-top-nav                          |
-|               | sidebar-collapse                        |
-|               | sidebar-mini                            |
-|---------------------------------------------------------|
--->
+
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
@@ -390,8 +370,8 @@ desired effect
 <!-- ./wrapper -->
 
 
-<script src="{% static 'admin_lte/jquery/dist/jquery.min.js' %}"></script>
-<script src="{% static 'admin_lte/bootstrap/dist/js/bootstrap.min.js' %}"></script>
-<script src="{% static 'admin_lte/dist/js/adminlte.min.js' %}"></script>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/adminlte.min.js' %}"></script>
 </body>
 </html>
